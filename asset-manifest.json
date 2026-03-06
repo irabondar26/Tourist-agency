@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/-Tourist-agency/static/css/main.6d8736ea.css",
+    "main.js": "/-Tourist-agency/static/js/main.6672b885.js",
+    "static/media/calendar.svg": "/-Tourist-agency/static/media/calendar.0184ace811af85e0c5cfd909c72d96e8.svg",
+    "static/media/phone.svg": "/-Tourist-agency/static/media/phone.9cf688c55d9aa0436e121986532471c7.svg",
+    "static/media/location.svg": "/-Tourist-agency/static/media/location.6d4873d8b89cf822df64a380866f418a.svg",
+    "static/media/spinner.svg": "/-Tourist-agency/static/media/spinner.e14a148f6f66604845a8ad577268f67e.svg",
+    "static/media/mail.svg": "/-Tourist-agency/static/media/mail.152830c85f866f3f9901b5ac70d07d08.svg",
+    "static/media/filter.svg": "/-Tourist-agency/static/media/filter.0e61e0870238c1f47e25b3b22d32d2f1.svg",
+    "index.html": "/-Tourist-agency/index.html",
+    "static/media/threeLines.svg": "/-Tourist-agency/static/media/threeLines.ca31260165748c7bef1b1da12f93aa13.svg",
+    "static/media/instagram.svg": "/-Tourist-agency/static/media/instagram.f439eaf363f6106a9f785b9743e26b92.svg",
+    "static/media/facebook.svg": "/-Tourist-agency/static/media/facebook.0fac3e9ae6012f65f160603c4ad1c79d.svg",
+    "static/media/cross.svg": "/-Tourist-agency/static/media/cross.746f3175355941521b90b864f53a57e0.svg",
+    "main.6d8736ea.css.map": "/-Tourist-agency/static/css/main.6d8736ea.css.map",
+    "main.6672b885.js.map": "/-Tourist-agency/static/js/main.6672b885.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d8736ea.css",
+    "static/js/main.6672b885.js"
+  ]
+}
