@@ -6,7 +6,7 @@ import { saveStateToLocalStorage, deleteStateFromLocalStorage } from "../../util
 
 function Tour({ el }) {
     const [mouseEnter, setMouseEnter] = useState(false);
-
+    
     return (
         <div className={styles.tour}>
             <div className={styles.tourImgWrapper} onMouseEnter={() => setMouseEnter(true)} onMouseLeave={() => setMouseEnter(false)}>

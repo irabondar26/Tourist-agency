@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from "./MainPage.module.scss";
 import { NavLink } from "react-router-dom";
 import ToursList from '../../Components/ToursList/ToursList';
@@ -7,30 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ReactComponent as Spinner } from "../../img/spinner.svg";
 import ReactDatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { getStateFromLocalStorage,saveStateToLocalStorage} from '../../utils/localStorageHelper';
+import { getStateFromLocalStorage, saveStateToLocalStorage } from '../../utils/localStorageHelper';
 
 function MainPage() {
 
   const testimonials = getStateFromLocalStorage("testimonials");
-  //   {
-  //     id: 1,
-  //     img: "https://img.freepik.com/premium-photo/close-up-stylish-young-business-woman-sitting-chair_252847-43947.jpg",
-  //     name: 'Анна Маковська',
-  //     text: 'Я хотіла подякувати вам за те, що ви спланували поїздку до Карпат для мене та мого хлопця. Це було неймовірно та перевершило мої очікування! Ми чудово провели час і були дуже задоволені розміщенням.'
-  //   },
-  //   {
-  //     id: 2,
-  //     img: "https://img.freepik.com/premium-photo/portrait-girl-closeup-girl-brown-background-beautiful-look_215924-2125.jpg",
-  //     name: 'Дарина Охрименко',
-  //     text: 'Я чудово провела час під час наших подорожей Карпат, у мене були просто чудові враження. Мені сподобалося розташування табору Gorges, оскільки я поачила та відчула на собі те, як раніше жили люди у карпатах. Обслуговування було чудовим, і всі були дуже уважними!'
-  //   },
-  //   {
-  //     id: 3,
-  //     img: "https://w0.peakpx.com/wallpaper/576/387/HD-wallpaper-cute-girl-blonde-hairs-blonde-girls-model.jpg",
-  //     name: 'Олена Шевченко',
-  //     text: "Просто хотіла сказати велике-велике спасибі за допомогу в організації дивовижної пригоди! Ми з племінником отримали задоволення! Усе помешкання було ідеальним, як і всі види діяльності, якими ми займалися (походи, риболовля та масаж!) У нас такі приємні спогади, і ми не можемо вам віддячити!"
-  //   }
-  // ];
 
   const [selectorFromValue, setSelectorFromValue] = useState("Київ");
   const [selectorToValue, setSelectorToValue] = useState("Одеса");
@@ -47,7 +28,7 @@ function MainPage() {
 
   return (
     <div className={styles.mainPage}>
-      <img className={styles.mainImg} src="https://w.forfun.com/fetch/1e/1e6e2c0e090932aeb463def6dcacaf8c.jpeg" alt="" />
+      <img className={styles.mainImg} src="https://img.tsn.ua/cached/292/tsn-8c5f6b23d1211bb14030cc3abd4583f7/thumbs/x/bf/74/1d750cdae19c5075e0123ec455ee74bf.jpeg" alt="" />
       <section className={styles.mainSection}>
         <div className={styles.mainInfo}>
           <h1 className={styles.mainInfoTite}>Подорожуй Україною!</h1>
@@ -119,7 +100,7 @@ function MainPage() {
                 onChange={dateChange}
                 dateFormat="dd.MM.YYYY"
                 placeholderText='Дата'
-                closeOnScroll={(e) => e.target === document}/>
+                closeOnScroll={(e) => e.target === document} />
             </div>
             <div className={styles.infoTitle}>
               Кількість днів
@@ -199,14 +180,20 @@ function MainPage() {
               </div>
             </div>
           </div>
-          <NavLink to="tours" className={styles.formBtn} onClick={saveStateToLocalStorage("searchTours",{
-            selectorFromValue:selectorFromValue,
-            selectorToValue:selectorToValue,
-            duration:duration,
-            adults:adults,
-            children:children,
-            date:selectedDate
-          })}>Знайти тур</NavLink>
+          {<NavLink
+            to="tours"
+            className={styles.formBtn}
+            onClick={() => saveStateToLocalStorage("searchTours", {
+              selectorFromValue,
+              selectorToValue,
+              duration,
+              adults,
+              children,
+              date: selectedDate
+            })}
+          >
+            Знайти тур
+          </NavLink>}
         </form >
       </section>
       <section className={styles.tours}>
@@ -219,7 +206,7 @@ function MainPage() {
       <section className={styles.testimonials}>
         <h2 className={styles.testimonialsTitle}>Відгуки</h2>
         <Carousel data-bs-theme="dark" className={styles.testimonialsSlider}>
-          {testimonials.map((el) => <Carousel.Item key={el.id} className={styles.sliderItem}>
+          {testimonials?.map((el) => <Carousel.Item key={el.id} className={styles.sliderItem}>
             <img className={styles.sliderItemImg} src={el.img} alt="" />
             <h3 className={styles.sliderItemTitle}>{el.name}</h3>
             <p className={styles.sliderItemText}>{el.text}</p>

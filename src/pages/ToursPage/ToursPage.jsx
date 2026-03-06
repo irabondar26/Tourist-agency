@@ -10,7 +10,6 @@ import { getStateFromLocalStorage, deleteStateFromLocalStorage } from '../../uti
 
 function ToursPage() {
   const seatrchTour = getStateFromLocalStorage("searchTours");
-  const tours = getStateFromLocalStorage("tours");
 
   const [filterIsOpen, setFilterIsOpen] = useState(false);
   const [selectorFromValue, setSelectorFromValue] = useState(seatrchTour ? seatrchTour.selectorFromValue : "Київ");
@@ -22,6 +21,12 @@ function ToursPage() {
   const [children, setChildren] = useState(seatrchTour ? seatrchTour.children : 0);
   const [search, isSearch] = useState(seatrchTour ? true : false);
   const [date, setdate] = useState(seatrchTour ? new Date(seatrchTour.date) : "");
+  const [tours, setTours] = useState([]);
+
+  useEffect(() => {
+    const storedTours = getStateFromLocalStorage("tours") || [];
+    setTours(storedTours);
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -29,84 +34,6 @@ function ToursPage() {
       isSearch(false);
     }
   }, [])
-  //   {
-  //     id: 3,
-  //     country: "Україна",
-  //     city: "Одеса",
-  //     price: 350,
-  //     img: "https://24tv.ua/resources/photos/news/202107/1685585.jpg?v=1661261418000",
-  //     hotel: "Holiday Inn Express - Oak Grove, an IHG Hotel",
-  //     photoHotel: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/277581133.jpg?k=4afc6130eab5a02d0cd51830d1be97f7f181f4cdd281f2b692ed638524d6ab82&o=&hp=1",
-  //     startDate: "12.06.2024",
-  //     finishDate: "",
-  //     eat: "сніданок",
-  //     duration: 7,
-  //     adult: 2,
-  //     children: 0,
-  //     transfet: "включений",
-  //     from: "Київ",
-  //     to: "Karpaty",
-  //     hot: false,
-  //   },
-  //   {
-  //     id: 4,
-  //     country: "Україна",
-  //     city: "Івано-Франківськ",
-  //     price: 350,
-  //     img: "https://karpatium.com.ua/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdPIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86f901a06a2c1919b7944e4045b219ba0ba7f92d/%D1%80%D0%B0%D1%82%D1%83%D1%88%D0%B0%20%D1%84%D1%80%D0%B0%D0%BD%D0%BA%D1%96%D0%B2%D1%81%D1%8C%D0%BA%20%D1%89%D0%BE%20%D0%BF%D0%BE%D0%B4%D0%B8%D0%B2%D0%B8%D1%82%D0%B8%D1%81%D1%8C.jpeg",
-  //     hotel: "Готельно-рестораний комплекс Silver",
-  //     photoHotel: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/258901723.jpg?k=fcbc30b94c200746f1276933953d6a043ff5a326c52f44a37101b16351c1fb1a&o=&hp=1",
-  //     startDate: "12.06.2024",
-  //     finishDate: "",
-  //     eat: "сніданок",
-  //     duration: 7,
-  //     adult: 2,
-  //     children: 0,
-  //     transfet: "включений",
-  //     from: "Київ",
-  //     to: "Karpaty",
-  //     hot: false,
-  //   },
-  //   {
-  //     id: 1,
-  //     country: "Україна",
-  //     city: "Яремче",
-  //     price: 135,
-  //     img: "https://vidviday.ua/storage/media/tour/16498/velika-yaremce-bukovel-gedzyo.jpg",
-  //     hotel: "Girske Povitria 2",
-  //     photoHotel: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/146371181.jpg?k=f25014da08741717dd07915c641214c7028f8b581409c303583f4a9e3f1bcccb&o=&hp=1",
-  //     startDate: "14.06.2024",
-  //     finishDate: "",
-  //     eat: "сніданок",
-  //     duration: 7,
-  //     adult: 2,
-  //     children: 0,
-  //     transfet: "включений",
-  //     from: "Київ",
-  //     to: "Яремче",
-  //     hot: true,
-  //   },
-  //   {
-  //     id: 2,
-  //     country: "Україна",
-  //     city: "Буковель",
-  //     price: 480,
-  //     img: "https://upload.wikimedia.org/wikipedia/commons/9/97/%D0%98%D0%B2%D0%B0%D0%BD%D0%BE-%D0%A4%D1%80%D0%B0%D0%BD%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C.%D0%93%D0%BE%D1%80%D0%BD%D0%BE-%D0%BB%D1%8B%D0%B6%D0%BD%D1%8B%D0%B9_%D0%BA%D1%83%D1%80%D0%BE%D1%80%D1%82_%D0%91%D1%83%D0%BA%D0%BE%D0%B2%D0%B5%D0%BB%D1%8C.jpg",
-  //     hotel: "WOOD HOTEL RESORT & SPA",
-  //     photoHotel: "https://cdn.segodnya.ua/i/original/media/image/5f8/9bf/f54/5f89bff545308.jpg.webp",
-  //     startDate: "14.06.2024",
-  //     finishDate: "",
-  //     eat: "сніданок",
-  //     duration: 7,
-  //     adult: 2,
-  //     children: 0,
-  //     transfet: "включений",
-  //     from: "Київ",
-  //     to: "Karpaty",
-  //     hot: true,
-  //   },
-
-  // ];
 
   return (
     <div className={styles.tourPageWrapper}>
